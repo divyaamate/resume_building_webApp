@@ -1,0 +1,128 @@
+<!-- <form action="/save_user/" method="post">
+    {% csrf_token %}
+    <input type="text" name="uname" ><br>
+    <input type="number" name="umobile"><br>
+    <input type="email" name="uemail"><br>
+    <input type="password" name="upassword"><br>
+    <button>Create account</button>
+</form> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <title>Document</title>
+    <style>
+        .bdy{
+    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    }
+    
+.divider-text {
+        position: relative;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+}
+.divider-text span {
+        padding: 7px;
+        font-size: 12px;
+        position: relative;   
+        z-index: 2;
+}
+.divider-text:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+        top: 55%;
+        left: 0;
+        z-index: 1;
+}
+    
+.btn-facebook {
+        background-color: #405D9D;
+        color: #fff;
+}
+.btn-twitter {
+        background-color: #42AEEC;
+        color: #fff;
+}
+.btn-block{
+        color: black;
+        background-color: #FFC312;
+          
+}
+.text_title{
+        color: white;
+        background: rgb(55,106,167);
+background: radial-gradient(circle, rgba(55,106,167,1) 16%, rgba(112,29,99,0.9920343137254902) 96%);
+}
+
+    </style>
+</head>
+<body class="bdy" >
+    <div class="card bdy">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Create Account</h4>
+            <p class="text-center">Get started with your free account</p>
+            <p>
+                <a href="https://x.com/twitt_login" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
+                <a href="https://www.facebook.com/" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+            </p>
+            <p class="divider-text">
+                <span class="bg-light text-dark">OR</span>
+            </p>
+            <form action="/save_user/" method="post">
+                {% csrf_token %}
+            <div class="form-group input-group">
+                <div class="input-group-prepend in1">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                 </div>
+                <input name="uname" class="form-control" placeholder="Full name" type="text">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend in1">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                 </div>
+                <input name="uemail" class="form-control" placeholder="Email address" type="email">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend in1">
+                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                </div>
+                <select class="custom-select" style="max-width: 120px;">
+                    <option selected="">+91</option>
+                    <option value="1">+92</option>
+                    <option value="2">+98</option>
+                    <option value="3">+71</option>
+                </select>
+                <input name="umobile" class="form-control" placeholder="Phone number" type="text">
+            </div> 
+            <div class="form-group input-group">
+                <div class="input-group-prepend in1">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input class="form-control" name="upassword" placeholder="Create password" type="password">
+            </div> 
+                                                
+            <div class="form-group">
+                <button type="submit" class="btn  btn-block"> Create Account  </button>
+            </div> <!-- form-group// -->      
+            <p class="text-center">Have an account? <a href="/" class="text-white">Log In</a> </p>                                                                 
+        </form>
+        </article>
+        </div>
+</body>
+</html>

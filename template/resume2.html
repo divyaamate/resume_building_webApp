@@ -1,0 +1,9 @@
+<h1>resume</h1>
+{% for row in data %}
+<h2>{{row.name}}</h2>
+<h3>{{row.mobile}}</h3>
+<h3>{{row.email}}</h3>
+<h3>{{row.address}}</h3>
+<h3>{{row.linkedin_link}}</h3>
+<img src="/{{ row.image }}" alt="" class="img-fluid wc-image">
+{% endfor %}

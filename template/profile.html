@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+	<script src="https://kit.fontawesome.com/733718af8a.js" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body style="background-color: azure;">
+    <div class="container-fluid text_title">
+        <div class="row">
+          <div class="col-md-12">
+              <h1 class="text-center">Profile</h1>
+              
+          </div>
+        </div>
+    </div> 
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item active" aria-current="page">Personal Details</li>
+                    </ol>
+                  </nav> -->
+                  
+                  <nav aria-label="breadcrumb ">
+                    <ol class="breadcrumb text-center"  >
+                      <li class="breadcrumb-item" data-toggle="modal" data-target="#exampleModal"><a href="#">Personal Details</a></li>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Personal Details</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/save_contactDetails/" method="post" enctype="multipart/form-data">
+                                  {% csrf_token %}
+                                  <div class="form-group">
+                                    <label class="text-left">Name</label>
+                                    <input type="text" class="form-control" name="name"  placeholder="Your Name">
+                                    
+                                  </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputEmail1">Email address</label>
+                                      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Social media</label>
+                                      <input type="text" name="linkedin_link" class="form-control" id="exampleInputEmail1"  placeholder="Social media link">
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Address</label>
+                                      <textarea name="address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Phone</label>
+                                      <input type="number" name="mobile" class="form-control" id="exampleInputEmail1"  placeholder="Enter your mobile number">
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleFormControlFile1">Photo</label>
+                                      <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                                    </div>
+                                    <button type="submit" class="btn login_btn">Submit</button>
+                                </form>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" data-toggle="modal" data-target="#exampleModa2"><a href="#">Education</a></li>
+                        <div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Education Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  <form action="/save_education/" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                      <label class="text-left">Degree</label>
+                                      <input type="text" class="form-control" name="course" >
+                                      
+                                    </div>
+                                      <div class="form-group">
+                                        <label >School/University</label>
+                                        <input type="text" class="form-control" name="university">
+                                        
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Grade/Score</label>
+                                        <input type="text" class="form-control" name="grade">
+                                        
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Passout Year</label>
+                                        <input type="date" class="form-control" name="year">
+                                        
+                                      </div>
+                                      
+                                      <button type="submit" class="btn login_btn">Submit</button>
+                                    </form>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+                    </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" data-toggle="modal" data-target="#exampleModa3"><a href="#">Experiance</a></li>
+                        <div class="modal fade" id="exampleModa3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Experiance Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  <form>
+                                    <div class="form-group">
+                                      <div class="row">
+                                        <div class="col">
+                                          <label >Job Title</label>
+                                          <input type="text" class="form-control" placeholder="Job Title">
+                                        </div>
+                                        <div class="col">
+                                          <label >Company Name</label>
+                                          <input type="text" class="form-control" placeholder="Company name">
+                                        </div>
+                                      </div>
+                                      <!-- <div  class="form-group">
+                                        <label >Start Date</label>
+                                        <input type="date" class="form-control">
+                                        <label >End Date</label>
+                                        <input type="date" class="form-control">
+                                      </div> -->
+                                      <div class="row">
+                                        <div class="col">
+                                          <label >Start Date</label>
+                                          <input type="date" class="form-control" placeholder="First name">
+                                        </div>
+                                        <div class="col">
+                                          <label >End Date</label>
+                                          <input type="date" class="form-control" placeholder="Last name">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Details</label>
+                                        <textarea name="address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        
+                                      </div>
+                                     
+                                      
+                                      <button type="submit" class="btn login_btn">Submit</button>
+                                    </form>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+                    </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" data-toggle="modal" data-target="#exampleModa4"><a href="#">Skills</a></li> 
+                        <div class="modal fade" id="exampleModa4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Skills</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form method="post">
+                                  {% csrf_token %}
+                                  
+                                  <label for="dropdown">Select Status:</label>
+                                  <select name="status" id="dropdown">
+                                      <option value="python">PYTHON</option>
+                                      <option value="java">JAVA</option>
+                                      <option value="php">PHP</option>
+                                      <option value="node js">NODE JS</option>
+                                  </select>
+                                  
+                                  <button type="submit">Submit</button>
+                              </form>
+                                <!-- <select class="custom-select custom-select-lg mb-3">
+                                  <option selected>Select techonolgy</option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select> -->
+                                  <!-- <form>
+                                    <div class="form-group">
+                                      <label class="text-left">Skills</label>
+                                      <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+                                      
+                                    </div>
+                                      
+                                      
+                                      <button type="submit" class="btn login_btn">Submit</button>
+                                    </form> -->
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+
+                    </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" data-toggle="modal" data-target="#exampleModa5"><a href="#">Objective</a></li> 
+                        <div class="modal fade" id="exampleModa5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Objective </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  <form action="/save_objective/" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                      <label class="text-left">Objective</label>
+                                      <input type="text" class="form-control" name="title"><br>
+                                      <textarea name="about" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                                    </div>
+                                      
+                                      
+                                      <button type="submit" class="btn login_btn">Submit</button>
+                                    </form>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" data-toggle="modal" data-target="#exampleModa6"><a href="#">Language</a></li> 
+                        <div class="modal fade" id="exampleModa6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Language You Know</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  <form>
+                                    <!-- <div>
+                                      <select class="form-control form-control-lg">
+                                        <option>Large select</option>
+                                      </select>
+                                    </div> -->
+                                    <div>
+                                    <label for="pet-select" >Choose a languge:</label>
+
+                                    <select name="pets" id="pet-select" class="form-control">
+                                      <option value="">--Please choose an option--</option>
+                                      <option value="">English</option>
+                                      <option value="">Marathi</option>
+                                      <option value="">Hindi</option>
+                                      <option value="">Urdu</option>
+                                      <option value="">Gujarati</option>
+                                      
+                                    </select>
+                                  </div>
+                                   
+                                      <button type="submit" class="btn login_btn mt-3 d-flex">Submit</button>
+                                    </form>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" data-toggle="modal" data-target="#exampleModa7"><a href="#">Projects</a></li> 
+                        <div class="modal fade" id="exampleModa7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Project Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  <form action="/save_project/" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                      <label class="text-left">Title</label>
+                                      <input type="text" class="form-control" name="project_name" >
+                                      
+                                    </div>
+                                      <div class="form-group">
+                                        <div class="row">
+                                          <div class="col">
+                                            <label >Start Date</label>
+                                            <input type="date" class="form-control" name="project_start" >
+                                          </div>
+                                          <div class="col">
+                                            <label >End Date</label>
+                                            <input type="date" class="form-control" name="project_end" >
+                                          </div>
+                                        </div>
+                                        
+                                      </div>
+                                      <div class="form-group">
+                                        <label>Decription</label>
+                                        <textarea  class="form-control" name="project_decription" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                                      </div>
+                                  
+                                      
+                                      <button type="submit" class="btn login_btn">Submit</button>
+                                    </form>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" data-toggle="modal" data-target="#exampleModa8"><a href="#">Course</a></li> 
+                        <div class="modal fade" id="exampleModa8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Course Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  <form action="/save_course/" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                      <label class="text-left">Course Name</label>
+                                      <input type="text" class="form-control"  name="Certificate_name" >
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="text-left">Course address</label>
+                                      <input type="text" class="form-control"  name="cer_address" >
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="text-left">Year</label>
+                                    <input type="date" class="form-control"  name="certicicate_date" >
+                                    </div>  
+                                      
+                                
+                                      
+                                      <button type="submit" class="btn login_btn">Submit</button>
+                                    </form>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </ol>
+                  </nav>
+                  
+                 
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text_title">
+      <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center "><a href="/resume1" class="text-light"><i class="fa-solid fa-eye"></i>View Template</a></h1>
+            
+        </div>
+      </div>
+  </div> 
+</body>
+</html>

@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+	<script src="https://kit.fontawesome.com/733718af8a.js" crossorigin="anonymous"></script>
+<style>
+    .section-title{
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #343a40;
+        border-bottom: 2px solid #dee2e6;
+        padding-bottom: 5px;
+        color:rgb(121, 12, 79);
+        text-transform: uppercase;
+}
+
+
+</style>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" >
+                <div class="card mt-5  shadow-sm p-3 mb-5 bg-light rounded" style="border: none;">
+                    <div class="row">
+                        <div class="col-md-4 ">
+                            {% for row in data %}
+                            <img src="/{{ row.image }}" alt="" style="border-radius: 50%;" width="70%" class="img-fluid mx-auto d-block">
+                            <div class=" mt-1">
+                                <h5 class="text-uppercase text-center">{{row.name}}</h5>
+                                <h6 class="text-center">fresher</h6>
+                               </div>
+                            <h5 class="  mt-3 section-title">Contact</h5>
+                            <ul  style="list-style-type: none;">
+                                <li><span><i class="fa-solid fa-phone"></i></span>&nbsp; {{row.mobile}}</li>
+                                <li><span><i class="fa-solid fa-envelope"></i></span>&nbsp; {{row.email}}</li>
+                                <li><span><i class="fa-solid fa-location-dot"></i></span>&nbsp; {{row.address}}</li>
+                                <li><span><i class="fa-solid fa-globe"></i></span>&nbsp; {{row.linkedin_link}}</li>
+    
+                            </ul>
+                            {% endfor %}
+                            <h5 class=" section-title ">Skill</h5>
+                            {% for status in statuses %}
+                                     <option value="{{ status.id }}">{{ status.name }}</option>
+                                  {% endfor %}
+                            <!-- <ul>
+                                <li> sk1</li>
+                                <li> sk1</li>
+                                <li> sk1</li>
+    
+                                <li> sk1</li>
+                            </ul> -->
+                            <h5 class=" section-title">langauge</h5>
+                            <ul>
+                                <li> sk1</li>
+                                <li> sk1</li>
+                                <li> sk1</li>
+    
+                                <li> sk1</li>
+                            </ul> 
+    
+                        </div>
+                        <div class="col-md-8 mt-3">
+                           
+                                {% for row in aboutdata %}
+                           
+                                <h5 class="section-title">{{row.title}}</h5>
+                                <p>{{row.about}}</p>
+                               {% endfor %}
+                                <h5 class="section-title">Education</h5>
+                                {% for row in educationData %}
+                                <h6>{{row.course}}</h6>
+                                <p>{{row.university}}</p>
+                                <div class="d-flex" style="margin-top: -10px;">
+                                    <p>{{row.year}}</p>
+                                    <p class="ml-5">{{row.grade}}</p>
+                                </div>
+                                {% endfor %}
+                                <h5 class="section-title">Personal Project</h5>
+                                {% for row in projectdata %}
+                                <p><b>Title</b> {{row.project_name}}</p>
+                                <p><b>Date :</b>{{row.project_start}} ,{{row.project_end}}</p>
+                                <p><b>Description : </b> {{row.project_decription}}</p>
+                                {% endfor %}
+                                <h5 class="section-title">Course</h5>
+                                {% for row in coursedata %}
+                                <p>{{row.Certificate_name}}</p>
+                                <p>{{row.cer_address}}</p>
+                                <p>{{row.Certificate_date}}</p>
+                                {% endfor %}
+                           
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    
+        
+</body>
+</html>
