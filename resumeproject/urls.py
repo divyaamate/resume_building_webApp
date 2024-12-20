@@ -28,12 +28,26 @@ urlpatterns = [
     path('profile/',views.profile),
     path('resumetemplate/',views.resumetemplate),
     path('resume1/',views.resume1),
-    
+    path('resume2/',views.resume2),
     path('save_contactDetails/',views.save_contactDetails),
     path('save_education/',views.save_education),
     path('save_objective/',views.save_objective),
     path('save_project/',views.save_project),
-    path('save_course/',views.save_course)
+    path('save_course/',views.save_course),
+    path('save_skill/',views.save_skill),
+    path('save_langauge/',views.save_langauge),
+    path('save_experience/',views.save_experience),
+    path('delete_skill/',views.delete_skill),
+    path('delete_langauge/',views.delete_langauge),
+    path('delete_education/',views.delete_education),
+    path('delete_course/',views.delete_course),
+    path('delete_project/',views.delete_project),
+    path('delete_contact/',views.delete_contact),
+    path('delete_experiance/',views.delete_experiance),
+    path('delete_about/',views.delete_about),
+
+    path('allresume/',views.allresume),
+    
     # path('dropdown/', views.dropdown),
     
 ]

@@ -10,7 +10,23 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css'%}">
 	<script src="https://kit.fontawesome.com/733718af8a.js" crossorigin="anonymous"></script>
+<style>
+  .login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
 
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+.text_title{
+        color: white;
+        background: rgb(55,106,167);
+background: radial-gradient(circle, rgba(55,106,167,1) 16%, rgba(112,29,99,0.9920343137254902) 96%);
+}
+</style>
     <title>Document</title>
 </head>
 <body style="background-color: azure;">
@@ -83,6 +99,7 @@
                       </div>
                     </ol>
                     <ol class="breadcrumb">
+                      
                         <li class="breadcrumb-item" data-toggle="modal" data-target="#exampleModa2"><a href="#">Education</a></li>
                         <div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
@@ -137,37 +154,33 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                  <form>
+                                  <form  action="/save_experience/" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
                                     <div class="form-group">
                                       <div class="row">
                                         <div class="col">
                                           <label >Job Title</label>
-                                          <input type="text" class="form-control" placeholder="Job Title">
+                                          <input type="text" class="form-control" name="job_title" placeholder="Job Title">
                                         </div>
                                         <div class="col">
                                           <label >Company Name</label>
-                                          <input type="text" class="form-control" placeholder="Company name">
+                                          <input type="text" class="form-control" name="company_name" placeholder="Company name">
                                         </div>
                                       </div>
-                                      <!-- <div  class="form-group">
-                                        <label >Start Date</label>
-                                        <input type="date" class="form-control">
-                                        <label >End Date</label>
-                                        <input type="date" class="form-control">
-                                      </div> -->
+                                      
                                       <div class="row">
                                         <div class="col">
                                           <label >Start Date</label>
-                                          <input type="date" class="form-control" placeholder="First name">
+                                          <input type="date" class="form-control" name="start_date">
                                         </div>
                                         <div class="col">
                                           <label >End Date</label>
-                                          <input type="date" class="form-control" placeholder="Last name">
+                                          <input type="date" class="form-control" name="end_date">
                                         </div>
                                       </div>
                                       <div class="form-group">
                                         <label>Details</label>
-                                        <textarea name="address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" name="job_details" rows="3"></textarea>
                                         
                                       </div>
                                      
@@ -192,35 +205,17 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <form method="post">
-                                  {% csrf_token %}
-                                  
-                                  <label for="dropdown">Select Status:</label>
-                                  <select name="status" id="dropdown">
-                                      <option value="python">PYTHON</option>
-                                      <option value="java">JAVA</option>
-                                      <option value="php">PHP</option>
-                                      <option value="node js">NODE JS</option>
-                                  </select>
-                                  
-                                  <button type="submit">Submit</button>
-                              </form>
-                                <!-- <select class="custom-select custom-select-lg mb-3">
-                                  <option selected>Select techonolgy</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
-                                </select> -->
-                                  <!-- <form>
+                                  <form action="/save_skill/" method="post" enctype="multipart/form-data" >
+                                    {% csrf_token %}
                                     <div class="form-group">
                                       <label class="text-left">Skills</label>
-                                      <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+                                      <input class="form-control form-control-lg" type="text" name="skill" placeholder="Enter your technology">
                                       
                                     </div>
                                       
                                       
                                       <button type="submit" class="btn login_btn">Submit</button>
-                                    </form> -->
+                                    </form>
                               </div>
                               
                             </div>
@@ -270,28 +265,17 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                  <form>
-                                    <!-- <div>
-                                      <select class="form-control form-control-lg">
-                                        <option>Large select</option>
-                                      </select>
-                                    </div> -->
-                                    <div>
-                                    <label for="pet-select" >Choose a languge:</label>
-
-                                    <select name="pets" id="pet-select" class="form-control">
-                                      <option value="">--Please choose an option--</option>
-                                      <option value="">English</option>
-                                      <option value="">Marathi</option>
-                                      <option value="">Hindi</option>
-                                      <option value="">Urdu</option>
-                                      <option value="">Gujarati</option>
-                                      
-                                    </select>
+                                <form action="/save_langauge/" method="post" enctype="multipart/form-data" >
+                                  {% csrf_token %}
+                                  <div class="form-group">
+                                    <label class="text-left">Language</label>
+                                    <input class="form-control form-control-lg" type="text" name="language" placeholder="Enter the language you know">
+                                    
                                   </div>
-                                   
-                                      <button type="submit" class="btn login_btn mt-3 d-flex">Submit</button>
-                                    </form>
+                                    
+                                    
+                                    <button type="submit" class="btn login_btn">Submit</button>
+                                  </form>
                               </div>
                               
                             </div>
@@ -393,7 +377,7 @@
     <div class="container-fluid text_title">
       <div class="row">
         <div class="col-md-12">
-            <h1 class="text-center "><a href="/resume1" class="text-light"><i class="fa-solid fa-eye"></i>View Template</a></h1>
+            <h1 class="text-center "><a href="/allresume" class="text-light"><i class="fa-solid fa-eye"></i>View Template</a></h1>
             
         </div>
       </div>
